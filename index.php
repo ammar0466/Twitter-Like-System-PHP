@@ -1,8 +1,10 @@
 <?php
 session_start();
-$user_id = $_SESSION['user_id'];
+//$user_id = $_SESSION['user_id'];
+$user_id = (isset($_SESSION['user_id'])) ? $_SESSION['user_id'] : null;
 ?>
 <?php
+if (isset($_POST['login-btn'])){
 if($_POST['login-btn']=="login-submit"){
   if($_POST['username']!="" && $_POST['password']!=""){
     $username = strtolower($_POST['username']);
@@ -32,16 +34,17 @@ if($_POST['login-btn']=="login-submit"){
     $error_msg = "All fields must be filled out";
   }
 }
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=425px, user-scalable=no">
 
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <script src="js/bootstrap.min.js"></script>
 
   <title>Twitter-like-system-PHP</title>
 </head>
@@ -60,7 +63,7 @@ if($_POST['login-btn']=="login-submit"){
     </div>
     <input type="password" style="margin-bottom:10px;" class="form-control" placeholder="Password" name="password">
     <?php
-    if($error_msg){
+    if(isset($error_msg)){
         echo "<div class='alert alert-danger'>".$error_msg."</div>";
     }
     ?>

@@ -70,7 +70,23 @@ function getTime($t_time){
 		}
 		mysql_close($conn);
 	}
+	
+	
+	
+	echo "
+	<br>
+	<br>
+	<form action='search.php' method='POST'>
+			<textarea class='form-control' placeholder='Search your friend..' name='search'></textarea>
+			<button type='submit' style='float:right;margin-top:3px;' class='btn btn-success btn-xs'>Search</button>
+		</form>
+		<br>
+		<br>
+		";
+	
+	
 ?>
+
 <div class="jumbotron" style="padding:3px;">
 	<div class="container">
 		<h5>Made by <a href="http://simarsingh.com">Simar</a></h5>
